@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment, incrementValue } from "../redux/counter";
+import { decrement, increment } from "../redux-toolkit/counterSlice";
+
 
 const Counter = () => {
   const count = useSelector(state => state.counter.count);
+  console.log(count)
   const dispatch = useDispatch();
   const handleIncrement = () => {
+    console.log(increment())
     dispatch(increment());
   }
   const handleDecrement = () => {
     dispatch(decrement())
   }
 
-  const handleIncrementValue = () => {
-    dispatch(incrementValue(10))
-  }
+  // const handleIncrementValue = () => {
+  //   dispatch(incrementValue(10))
+  // }
   // const increment = () => {
   //   setCount(count + 1);
   // };
@@ -29,7 +32,7 @@ const Counter = () => {
       <div className="flex justify-center items-center gap-x-5">
         <button className="p-5 border border-gray-200" onClick={handleIncrement}>Increment</button>
         <button className="p-5 border border-gray-200" onClick={handleDecrement}>Decrement</button>
-        <button className="p-5 border border-gray-200" onClick={handleIncrementValue}>Increment 10</button>
+        {/* <button className="p-5 border border-gray-200" onClick={handleIncrementValue}>Increment 10</button> */}
       </div>
     </div>
   );
