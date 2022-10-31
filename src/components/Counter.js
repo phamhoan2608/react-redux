@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useLocalStorage from "../hooks/useLocalStorage";
 import { decrement, increment } from "../redux-toolkit/counterSlice";
 
 
 const Counter = () => {
   const count = useSelector(state => state.counter.count);
-  console.log(count)
+  //console.log(count)
+  const [countState,setCountState] = useLocalStorage("count",count);
   const dispatch = useDispatch();
+  
   const handleIncrement = () => {
-    console.log(increment())
+     setCountState(count);
+    //console.log(increment())
     dispatch(increment());
   }
   const handleDecrement = () => {
-    dispatch(decrement())
+    setCountState(count);
+    dispatch(decrement());
+    
   }
-
+  //setCountState();
+  //console.log("count local storage", countState)
   // const handleIncrementValue = () => {
   //   dispatch(incrementValue(10))
   // }
@@ -26,9 +33,10 @@ const Counter = () => {
   //   setCount(count - 1);
   // };
 
+
   return (
     <div className="flex flex-col items-center p-5 bg-white shadow max-w-[600px] mx-auto mt-10">
-      <h2 className="text-orange-300 mb-5">Count: {count}</h2>
+      <h2 className="text-orange-300 mb-5">Count: {countState}</h2>
       <div className="flex justify-center items-center gap-x-5">
         <button className="p-5 border border-gray-200" onClick={handleIncrement}>Increment</button>
         <button className="p-5 border border-gray-200" onClick={handleDecrement}>Decrement</button>

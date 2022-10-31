@@ -3,15 +3,16 @@ import count from '../data/count.json'
 const counterSlice = createSlice({
   name: "counter",
   initialState: {
-    count: count.value
+    count: Number(window.localStorage.getItem("count")) !== 0 ? Number(window.localStorage.getItem("count")) : count.value
   },
   reducers: {
-    increment: (state) => ({
+    increment: (state) => {
+      console.log("state", state.count)
+      return {
       ...state, count: state.count + 1,
-    })
+    }}
     ,
     decrement: (state) => ({
-      
       ...state, count: state.count - 1})
   }
 })
