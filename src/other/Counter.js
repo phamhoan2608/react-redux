@@ -1,29 +1,24 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { decrement, increment, current } from "../redux-toolkit/counterSlice";
+import { decrement, increment } from "../redux-toolkit/counterSlice";
 
 
 const Counter = () => {
   const count = useSelector(state => state.counter.count);
-  console.log("Counter",count)
+  //console.log(count)
   const [countState,setCountState] = useLocalStorage("count",count);
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    //console.log(increment())
-    dispatch(current());
-  },[])
   const handleIncrement = () => {
-    console.log("handleIncre",count)
      setCountState(count);
     //console.log(increment())
     dispatch(increment());
   }
   const handleDecrement = () => {
     setCountState(count);
-    dispatch(decrement()); 
+    dispatch(decrement());
+    
   }
   //setCountState();
   //console.log("count local storage", countState)
