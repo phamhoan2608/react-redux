@@ -5,8 +5,7 @@ import { toggleSidebar } from "../redux-toolkit/globalSlice";
 
 const ButtonMenu = () => {
   const {showSidebar} = useSelector((state) => state.global);
-  const dispatch = useDispatch()
-  console.log('---showSideBar---',showSidebar);
+  const dispatch = useDispatch();
   const handleChangeSidebar = () => {
     dispatch(toggleSidebar(!showSidebar))
   }
