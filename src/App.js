@@ -5,6 +5,7 @@ import "./App.css";
 import ButtonMenu from "./components/ButtonMenu";
 import Card from "./components/Card";
 import Counter from "./components/Counter";
+import HackerNews from "./components/HackerNews";
 import Sidebar from "./components/Sidebar";
 // import Counter from "./components/Counter";
 import useDarkMode from "./hooks/useDarkMode";
@@ -16,21 +17,21 @@ function App() {
   const [darkMode, setDarkMode] = useDarkMode();
   // const {count} = useSelector((state) => state.counter);
   const globalOption = useSelector((state) => state.global);
-  //console.log("globalOption",globalOption);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(toggleDarkMode(darkMode));
-  }, []);
-  const handleToggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    dispatch(toggleDarkMode(darkMode));
-  };
-  // console.log(globalOption);
-  //console.log(darkMode)
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(toggleDarkMode(darkMode));
+  // }, []);
+  // const handleToggleDarkMode = () => {
+  //   setDarkMode(!darkMode);
+  //   dispatch(toggleDarkMode(darkMode));
+  // };
+  //Generator function
   return (
     <div>
-       <Sidebar/>
-       <ButtonMenu/>     
+       {/* <Sidebar/>
+       <ButtonMenu/>      */}\
+       
+       <HackerNews/>
     </div>
 
     // <div className="flex flex-col justify-center align-middle items-center">
